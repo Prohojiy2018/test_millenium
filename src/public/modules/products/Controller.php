@@ -16,11 +16,11 @@ class Controller
     {
         $products = json_decode(file_get_contents("php://input"), true);
 
-        if (count($products) === 0) {
+        if (!is_array($products) || count($products) === 0) {
             exit('Товары не переданы');
         }
 
-        $output = [];
+        $inserted_products = [];
 
         foreach ($products as $product) {
             if (empty($product['title']) || empty($product['price'])) {
@@ -28,11 +28,9 @@ class Controller
             }
 
             if ($this->model->insertProduct($product) === 1) {
-                $output[] = $product;
+                $inserted_products[] = $product;
             }
         }
-
-        $inserted_products =  json_encode($output, JSON_UNESCAPED_UNICODE);
 
         print_r($this->view->show($inserted_products));
     }
