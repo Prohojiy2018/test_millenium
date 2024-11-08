@@ -17,10 +17,10 @@ pgmyadmin - http://localhost:8000/ (база данных mysql, имя поль
 
 запустить запросы из дампа
 
-проверить первое задание:
+проверить первое задание, пункт 1:
 
 http://localhost/orders?user_id=2
 
-проверить второе задание - через Postman http://localhost/products метод POST
+проверить второе задание, пункт 2 - через Postman http://localhost/products метод POST
 в body что то типа [{"title": "тест", "price": "123"},{"title": "тест1", "price": "1243"}]
 
